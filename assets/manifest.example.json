@@ -5,7 +5,7 @@
   "coverText": "让AI做我老板",
   "publishingTitle": "AI办公实践｜让助手帮你安排每天的文件整理任务",
   "style": "04",
-  "references": [{"role": "identity", "path": "/path/to/user-portrait.png"}],
+  "references": [{"role": "content-evidence", "path": "/path/to/source-material.png"}],
   "assets": [
     {"id": "x-article-main", "path": "cover-x-article.png", "width": 2000, "height": 800, "kind": "generated", "visualCheck": "pending", "sha256": null},
     {"id": "wechat-main", "path": "cover-wechat-main.png", "width": 1880, "height": 800, "kind": "generated", "visualCheck": "pending", "sha256": null},
