@@ -1,14 +1,9 @@
-# gbro-cover-design
+# gbro-cover-design · 多平台封面
 
-把文章扔给 agent，它读完内容、问你三轮问题，然后输出一段可以直接跑图的封面提示词。标题自动帮你想，构图逻辑全内置好了。画幅固定 3:4 竖版。
+保留原版有冲击力的10种构图与道具叙事，扩展为可交付真实成图的视频、图文和文章封面技能。无需每次固定三轮问答；不强制统一品牌配色。
 
-支持 Claude Code、Codex，以及任何支持自定义 skill 的 AI agent。
+## 效果（上游原版示例）
 
-基于 [oh-my-cover-design](https://github.com/feitangyuan/oh-my-cover-design)（MIT）改进：提问压缩为三轮、10 种风格模板按需加载、内置示例提示词库做 few-shot、固定 3:4 画幅与安全区定义、新增首次使用配置引导。
-
----
-
-## 效果
 
 <table>
   <tr>
@@ -27,66 +22,42 @@
 
 ---
 
-## 首次使用
 
-第一次触发时 skill 会先带你完成配置（不需要 API key，本 skill 只产出提示词）：
+## 本fork新增
 
-1. **人脸参考图**：准备一张清晰正脸照，存到 skill 目录的 `assets/my-face.png` 做默认图1（也可以选每次上传）
-2. **生图模型**：确认你用的模型支持多参考图输入（即梦/Seedream 4.0、Nano Banana、GPT-Image 等），否则无法保持人脸一致性
-
-配置结果记在 skill 目录的 `config.md`，之后不再重复问。
-
----
-
-## 怎么用
-
-把文章内容发给 agent，skill 自动触发，分三轮问你：
-
-1. 构图风格（会先根据文章内容给推荐）+ 封面标题
-2. 人脸参考图 + 产品截图等额外素材
-3. 表情、背景色调、字体、字色（一次列出，没提的交给模型决定）
-
-问完，输出提示词，拿去跑图。不需要懂设计，不需要自己写提示词。
-
----
-
-## 10 种构图风格
-
-| 风格 | 适合什么 |
-|------|---------|
-| 深色渐变风 | 人物居中，大字压在后面，冲击力最强 |
-| 纯色扁平风 | 干净清爽，人物 + 道具 + 纯色背景 |
-| 产品主视觉风 | 有 UI 截图或产品图时首选，截图占主体 |
-| 对比卡片风 | 前后对比、好坏对比类内容专用 |
-| 极简留白风 | 大留白，标题是唯一焦点，克制感强 |
-| 海报拼贴风 | 素材多的时候用，多层叠加，纵深感强 |
-| 人物侧置留白风 | 人物偏一侧，另一边全给标题，大气 |
-| 背影构图风 | 人物背对镜头，适合励志、启发类内容 |
-| 局部出镜风 | 只露手或半张脸，产品是绝对主角 |
-| 正面对视风 | 直视镜头，眼神接触，情绪直接 |
-
-每种风格的完整提示词模板在 `references/style-XX-*.md`，`references/examples.md` 里还有 8 组完整示例提示词做参照。
-
----
+- 视频/图文：按入口输出3:4、4:3、16:9或明确需要的9:16，横竖独立重排。
+- X Articles：5:2（2000×800）；X图片帖单独选择，避免混用规格。
+- 公众号：2.35:1主图（1880×800）＋主图同源1:1预览及裁切坐标；确有独立上传槽位时另做方图。
+- 真人/无人像模式；身份、风格、产品证据参考图分别声明，个人素材与配置留在用户目录。
+- 默认通过宿主已有授权工具生成真实位图并打开检查；仅要提示词时才只交提示词。无工具时如实说明缺口。
+- 封面大字与发布标题互补，分别记录；manifest交接每个槽位、成图、尺寸、来源与验收状态。
 
 ## 安装
 
-```bash
-git clone https://github.com/pyang5166/gbro-cover-design.git \
-  ~/.claude/skills/gbro-cover-design
+```sh
+git clone https://github.com/zzyong24/gbro-cover-design.git ~/.codex/skills/gbro-cover-design
 ```
 
-注意：风格模板和示例提示词库在 `references/` 目录里，SKILL.md 单文件不完整，请完整 clone。
+其他宿主换成相应skills目录，完整安装references、assets与scripts。已安装时先保存本地修改，再拉取更新；安装技能不等于授权付费、上传或发布。
 
----
+自然语言示例：“按这份稿件做抖音、B站和X Articles封面，用我的照片，保留原版风格。”或“给公众号做无人像主封面，方形裁切也要能看懂。”
 
-## 关于参考图
+## 配置与依赖
 
-- **图1**：你自己的人脸照，skill 会在提示词里保持五官一致性
-- **图2 起**：想放进封面的任何素材——产品图、UI 截图、品牌资产都行
+复制 `assets/config.example.json` 到 `~/.config/gbro-cover-design/config.json`，或用 `GBRO_COVER_CONFIG` 指定其他配置路径；填写已授权本地人像路径、平台人像偏好和署名。可完全不配置，直接使用当次输入。**不要将照片、凭据或个人配置提交进仓库**；旧版config.md可只读迁移到外置配置，不删除原件。
 
----
+宿主须有可用的授权图像生成工具；本技能不附带API凭据或收费服务，不自行充值或切换付费通道。离线规格脚本需要Python3；图片核对、公众号预览与测试需要Pillow（在自己的隔离工具环境安装，不改系统环境）。
 
-## License
+```sh
+python3 scripts/cover_contract.py plan --platform douyin --platform x-article --platform wechat-article --out /任务目录/plan.json
+python3 scripts/cover_contract.py verify /任务目录/manifest.json
+python3 -m unittest discover -s tests
+```
 
-MIT，基于 feitangyuan 的 oh-my-cover-design 改进，原始版权信息见 LICENSE。
+plan只列任务，verify只查文件/像素/同源裁切事实，不能证明画面好看、本人身份、用户认可、发布授权或平台验收。真实生成的提示词、输入与成图会发送到宿主选定的生图服务，按当次授权使用；个人输入不进入本仓库。
+
+规格、依据时效、安全区与模型尺寸限制见 [平台规格与交接](references/platform-output.md)。风格模板在 `references/style-XX-*.md`，原版提示词在 `references/examples.md`；模板比例现按当期槽位填写，示例仍保留原来的3:4。
+
+## 来源与许可
+
+Fork自 [pyang5166/gbro-cover-design](https://github.com/pyang5166/gbro-cover-design)，其基于 [feitangyuan/oh-my-cover-design](https://github.com/feitangyuan/oh-my-cover-design)。保留上游示例、署名与MIT许可，详见 [LICENSE](LICENSE)。上游示例是风格展示，不代表新增各平台规格均已经原生页面验收。

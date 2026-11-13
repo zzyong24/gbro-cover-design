@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "workId": "example-direction-only",
+  "status": "direction_draft",
+  "coverText": "让AI做我老板",
+  "publishingTitle": "AI办公实践｜让助手帮你安排每天的文件整理任务",
+  "style": "04",
+  "references": [{"role": "identity", "path": "/path/to/user-portrait.png"}],
+  "assets": [
+    {"id": "x-article-main", "path": "cover-x-article.png", "width": 2000, "height": 800, "kind": "generated", "visualCheck": "pending", "sha256": null},
+    {"id": "wechat-main", "path": "cover-wechat-main.png", "width": 1880, "height": 800, "kind": "generated", "visualCheck": "pending", "sha256": null},
+    {"id": "wechat-square-preview", "path": "cover-wechat-square-preview.png", "width": 800, "height": 800, "kind": "crop-preview", "derivedFrom": "wechat-main", "cropBox": [40, 0, 840, 800], "cropNormalized": [0.0212765957, 0, 0.4468085106, 1], "visualCheck": "pending", "sha256": null}
+  ],
+  "placements": [
+    {"platform": "x-article", "slot": "article-header", "assetId": "x-article-main", "portraitMode": "no-portrait", "specEvidence": "制作预设；实际入口待核", "nativeCheck": "pending"},
+    {"platform": "wechat-article", "slot": "main", "assetId": "wechat-main", "portraitMode": "no-portrait", "specEvidence": "制作预设；实际入口待核", "nativeCheck": "pending"},
+    {"platform": "wechat-article", "slot": "square-preview", "assetId": "wechat-square-preview", "portraitMode": "no-portrait", "specEvidence": "主图同源裁切预览", "nativeCheck": "pending"}
+  ]
+}

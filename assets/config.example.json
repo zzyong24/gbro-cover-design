@@ -1,0 +1,15 @@
+{
+  "identityReference": null,
+  "defaultPlatforms": [],
+  "portraitModeByPlatform": {
+    "douyin": "portrait",
+    "xiaohongshu": "portrait",
+    "bilibili": "portrait",
+    "channels": "portrait",
+    "x-article": "no-portrait",
+    "wechat-article": "no-portrait"
+  },
+  "signature": null,
+  "generation": "host-authorized-image-tool",
+  "note": "复制到用户配置目录并填本地素材路径；这里只是示例，不含个人照片、凭据或发布授权。配色按当期内容和所选原版风格，不强制品牌母版。"
+}
